@@ -1,0 +1,162 @@
+1.printing numbers from 10 to 15:
+import java.util.Scanner;
+public class Main
+{
+    public static void main(String[] args) 
+    {
+     int i;
+        for(i=10;i<=50;i++)
+        {
+            System.out.println(i);
+        }
+        
+    }
+}
+2.program to find the given number is positive or negative
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+       
+        Scanner obj = new Scanner(System.in);
+       
+        int userInput = obj.nextInt();
+        if(userInput>=0)
+        {
+            System.out.println("positive"); 
+        }
+        else 
+        {
+        
+        System.out.println("Negative");
+        }
+    }
+}
+3.reverse the number:
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+                int reverse=0;
+        Scanner obj = new Scanner(System.in);
+        int userInput = obj.nextInt();
+        while(userInput!=0)
+        {
+            reverse=reverse*10+userInput%10;
+            userInput=userInput/10;
+            
+        }
+        System.out.println(reverse);
+        
+        }
+}
+4.finding smaller number among three
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+               Scanner obj = new Scanner(System.in);
+        int userInput1 = obj.nextInt();
+         int userInput2 = obj.nextInt();
+     int userInput3 = obj.nextInt();
+     if((userInput1==userInput2)||(userInput2==userInput3)||(userInput1==userInput3))
+     {
+         System.out.println("three given numbers are same");
+         System.exit(0);
+
+     }
+     if((userInput1==userInput2)&&(userInput2==userInput3)&&(userInput1==userInput3))
+     {
+         System.out.println("two numbers among three are same");
+         System.exit(0);
+         
+     }
+     if((userInput1<userInput2)&&(userInput1<userInput3))
+     {
+           System.out.println("userInput1 "+userInput1+ " is smaller");
+     }
+    
+     
+     else if((userInput2<userInput1)&&(userInput2<userInput3))
+     {
+         System.out.println("userInput2 "+userInput2+ " is smaller");
+     }
+     else
+     {
+         System.out.println("userInput3 "+userInput3+ " is smaller");
+     }
+     
+     
+        
+       
+    }
+}
+5.discount program
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+              Scanner obj = new Scanner(System.in);
+        int userInput = obj.nextInt();
+        int userInput2;
+        int userInput3;
+        
+         
+     if(userInput==500)
+     {
+         System.out.println("no discount is applied");
+         
+     }
+     if((userInput>500)&&(userInput<1000))
+     {
+     userInput2=userInput/10;
+     userInput3=userInput-userInput2;
+     System.out.println("the final payable amount:" +userInput3);
+         
+     }
+     if(userInput>1000)
+     {
+            userInput2=userInput/20;
+     userInput3=userInput-userInput2;
+     System.out.println("the final payable amount:" +userInput3);
+         
+     }
+    
+     
+    
+     
+        
+       
+    }
+}
+6.print the numbers in given format
+import java.util.Scanner;
+public class Main 
+{
+    public static void main(String[] args) 
+    {
+                int i=5,j=5,k=5;
+        int[][] a=new int[5][5];
+        
+        for(i=0;i<5;i++)
+        {
+           
+            
+            for(j=0;j<i;j++)
+             {
+                 a[i][j]=k;
+                 System.out.print(a[i][j]);
+                 k--;
+             }
+            
+             while(j<5)
+             {
+                 a[i][j]=k;
+                 System.out.print(a[i][j]);
+                 j++;
+             }
+           
+            k=5;
+           System.out.println();
+             
+        }
+        
+        
+    }
+}
