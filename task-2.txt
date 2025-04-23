@@ -1,0 +1,266 @@
+1st program:
+package guvi;
+
+public class Person1 
+{
+	String name;
+	int age=18;
+	
+	
+	void display()
+	{
+		
+		System.out.println("The name is " +this.name);
+		System.out.println("The age is " +this.age);
+	}
+	public static void main(String args[])
+	{
+	Person1 p=new Person1();
+	p.name="s.sangeetha";				//object creation..//
+	p.age=26;
+	p.display();
+	}
+	
+	
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+2nd program:
+package guvi;
+import java.util.Scanner;								//main class//
+public class ProductMain 
+{
+	public static void main(String[] args)
+	{
+		int i;
+		Scanner sc=new Scanner(System.in);  //getting 5 userinputs//
+		int userinput1 []=new int[50];
+		int userinput2 []=new int[50];
+		int userinput3 []=new int[50];
+		int userinput4 []=new int[50];
+		int userinput5 []=new int[50];
+		for(i=0;i<5;i++)
+		{
+			if(i==0)
+			{
+				System.out.println("enter the 1st userinput values");
+				userinput1[0]=sc.nextInt();
+				userinput1[1]=sc.nextInt();
+				userinput1[2]=sc.nextInt();
+			}
+			if(i==1)
+			{
+				System.out.println("enter the 2nd userinput values");
+				userinput2[0]=sc.nextInt();
+				userinput2[1]=sc.nextInt();
+				userinput2[2]=sc.nextInt();
+			}
+			if(i==2)
+			{
+				System.out.println("enter the 3rd userinput values");
+				userinput3[0]=sc.nextInt();
+				userinput3[1]=sc.nextInt();
+				userinput3[2]=sc.nextInt();
+			}
+			if(i==3)
+			{
+				System.out.println("enter the 4th userinput values");
+				userinput4[0]=sc.nextInt();
+				userinput4[1]=sc.nextInt();
+				userinput4[2]=sc.nextInt();
+			}
+			if(i==4)
+			{
+				System.out.println("enter the 5th userinput values");
+				userinput5[0]=sc.nextInt();
+				userinput5[1]=sc.nextInt();
+				userinput5[2]=sc.nextInt();
+			}
+		}
+		
+		Product p=new Product(userinput1[0],userinput1[1],userinput1[2],0);
+		new Product(userinput2[0],userinput2[1],userinput2[2],1);      			//creating constructors and passing values from product class....//
+		new Product(userinput3[0],userinput3[1],userinput3[2],2);
+		new Product(userinput4[0],userinput4[1],userinput4[2],3);
+		new Product(userinput5[0],userinput5[1],userinput5[2],4);
+		p.display();
+		p.calculation(userinput1[1],userinput1[2],0);
+		p.calculation(userinput2[1],userinput2[2],1);
+		p.calculation(userinput3[1],userinput3[2],2);			//calling methods....//
+		p.calculation(userinput4[1],userinput4[2],3);
+		p.calculation(userinput5[1],userinput5[2],4);
+		p.total();
+		
+		
+				
+	}
+
+}
+---------------
+package guvi;
+
+public class Product 
+{
+	
+	static int a[]=new int[5];
+	static int b[]=new int[5];			//Product class//
+	static int c[]=new int[5];
+	static int sp[]=new int[5];
+	static int i=0,k=0;
+	Product()
+	{
+		
+	}
+	Product(int pid,int price,int quantity,int i)
+	{
+		
+		a[i]=pid;					//constructors...//
+		b[i]=price;
+		c[i]=price;
+		
+	}
+	void display()
+	{
+		while(i<5)
+		{
+			if(k<b[i])
+			{
+			
+				k=b[i];
+				i++;
+			}else						// printing highest price and pid value...//
+			{
+				i++;
+			}
+			
+		}
+		i=0;
+		
+		while(i<5)
+		{
+			if(k==c[i])
+			{
+				System.out.println("highest price: "+k);
+				System.out.println("highest pid value: "+a[i]);
+				break;
+				
+			}else
+			{
+				i++;
+			}
+			
+		}
+	}
+	void calculation(int price,int quantity,int i)
+	{
+		sp[i]=price*quantity;			//printing total amount...//
+		
+	}	
+	void total()
+	{
+		int sp1=sp[0]+sp[1]+sp[2]+sp[3]+sp[4];
+		System.out.println("the total amount spent: "+sp1);
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+3rd program:
+package guvi;
+
+import java.util.Scanner;
+
+public class Accounts 
+{
+	static int amount,balance;
+	Accounts()
+	{
+		
+	}
+	
+	Accounts(int balance1,int amount1 )
+	{
+		System.out.println("The initial balance is :"+balance1);			//parameterized constructor...//
+		System.out.println("The initial amount to be deposited is :"+amount1);
+		
+	}
+	int deposit(int amount1)
+	{
+		balance =amount1+balance;
+		System.out.println("The balance after amount is deposited "+balance);
+	return balance;
+	}
+	
+	int withdraw(int amount1)									//deposit, withdraw and display methods....//
+	{
+		if(balance>amount1)
+		{
+			balance=balance-amount1;
+		}
+		if(balance==amount1)
+		{
+			System.out.println("the balance and the amount to be withdrawn is same..so,the balance is null1");
+		}
+		if(amount>balance)
+		{
+			System.out.println("The amount is greater the balance...please check the amount to be withdrawn");
+		}
+		return balance;
+	}
+	void display(int balance1)
+	{
+		System.out.println("the balance amount is "+balance1);
+	}
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the initial amount and balance");
+		balance=sc.nextInt();
+		amount= sc.nextInt();							//getting userinputs-amount and balance....//
+		Accounts ac=new Accounts(balance,amount);
+		balance=ac.deposit(amount);
+		System.out.println("enter the amount to be withdrawn");
+		amount=sc.nextInt();
+		balance=ac.withdraw(amount);
+		ac.display(balance);
+		
+			
+	}
+
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+4th program:
+package guvi;
+
+public class Person 
+{
+	String name;				//parent class...//
+	int age;
+
+}
+------------
+package guvi;
+
+public class Employee extends Person		//inheriting parent class using extends keyword//
+{
+int employeeID,salary;
+
+	Employee()
+	{
+		employeeID=8989;
+		salary=50000;				//super keyword to use the parent class attributes...//
+		super.name="S.Sangeetha";			
+		super.age=26;
+		System.out.println("The following details are displayed down:");
+		System.out.println(employeeID);
+		System.out.println(salary);
+		System.out.println(name);
+		System.out.println(age);
+		
+		
+	}
+	public static void main(String args[])
+	{
+		Employee e=new Employee();
+	}
+}												***end****
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
