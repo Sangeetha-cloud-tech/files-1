@@ -1,0 +1,296 @@
+1.program:
+package guvitask3;
+
+public class Book {
+	static String b[][]=new String[5][5];
+	Book()
+	{
+		
+	}										//book class,creating attributes and constructor. calling userinput values.
+	Book(String title, String author,String isvalue,int i,int j)
+	{
+		b[i][j]=title;
+		b[i][j+1]=author;
+		b[i][j+2]=isvalue;
+	}
+	
+}
+----------------------------------------------------------------------------------------
+package guvitask3;
+public class Library extends Book
+{
+	
+	int i;
+	 static int bookid[]=new int[10];
+	 Library()
+	 {
+		 
+	 }										//library class extending book,creating methods
+	 Library(int bookid1,int i)
+	 {
+		 bookid[i]=bookid1; 								//add method
+	 }
+	
+	Book b1=new Book();
+	void add(int i,int j)
+	{
+		System.out.println("the values of added books are "+bookid[i]+" "+b1.b[i][j]+" "+b1.b[i][j+1]+" "+b1.b[i][j+2]);
+	}
+	int search(int bookid1,int n)
+	{
+		int k=0,i;
+		for(i=0;i<n;i++)											
+		{
+			if(bookid[i]==bookid1)
+			{										//search method
+				k=i;
+				
+				
+			}
+		}
+return k;
+	}
+	String remove(int i)
+	{
+		int j;
+		bookid[i]=0;											//remove method
+		for(j=0;j<3;j++)
+		{
+			
+			b1.b[i][j]=null;
+		}
+		return null;
+
+}
+	void display(int i1,int j1)
+	{
+	 													//display method.
+		int i=i1;
+		int j=j1;
+		System.out.print(bookid[i]+"\t");
+		System.out.print(b1.b[i][j]+"\t");
+		System.out.print(b1.b[i][j+1]+"\t");
+		System.out.print(b1.b[i][j+2]+"\t");
+		System.out.println("");
+		
+	}
+	
+}
+----------------------------------------------------------------------------------------
+package guvitask3;
+import java.util.Scanner;
+public class BookManagementSystem
+{
+	public static void main(String args[])
+	{
+		System.out.println("...welcome to library section....");
+	String a[][]=new String[10][10];
+	String ad[][]=new String[10][10];									//userinput values for initial number of books.
+	int i,j,n,bookid1,y;
+	int bookid[]=new int[10];
+	Scanner sc=new Scanner(System.in);
+	Library l=new Library();
+	System.out.println("enter the number of initial books to be entered");
+	n=sc.nextInt();
+	for(i=0;i<n;i++)
+	{
+		System.out.println("enter the book no. "+(i+1)+ " details:(book title,book author,book availability)");
+		for(j=0;j<3;j++)
+		{
+			
+			a[i][j]=sc.next();
+			
+			
+		}
+	}
+	
+	for(i=0;i<n;i++)
+	{
+		j=0;
+		new Book(a[i][j],a[i][j+1],a[i][j+2],i,j);
+		
+		
+	}
+	System.out.println("enter the bookid values");
+	for(i=0;i<n;i++)
+	{
+		bookid[i]=sc.nextInt();
+		new Library(bookid[i],i);
+	}
+	do
+	{
+	System.out.println("enter any of the following number to perform ur action on books");
+	System.out.println("1.Add");
+	System.out.println("2.replaced");
+	System.out.println("3.remove");
+	System.out.println("4.search");
+	System.out.println("5.display");
+	int operation=sc.nextInt();
+	switch(operation)
+	{
+	
+	case 1:												//adding book.
+		i=n;
+		System.out.println("enter added book values");
+	for(j=0;j<3;j++)
+	{
+		a[i][j]=sc.next();
+	}
+	j=0;
+		bookid[i]=sc.nextInt();
+		new Book(a[i][j],a[i][j+1],a[i][j+2],i,j);
+		new Library(bookid[i],i);
+		l.add(i,0);
+		n++;
+		break;
+	case 2:System.out.println("enter the bookid value to be replaced");
+				bookid1 =sc.nextInt();
+				i=l.search(bookid1,n);
+				l.remove(i);								//replaing book
+				System.out.println("enter the new book values");
+				for(j=0;j<3;j++)
+				{
+					ad[i][j]=sc.next();
+				}
+					bookid1=sc.nextInt();
+					j=0;
+					new Book(ad[i][j],ad[i][j+1],ad[i][j+2],i,j);
+					new Library(bookid1,i);
+					l.display(i, j);
+					
+		break;
+	case 3:
+		System.out.println("enter the bookid value to be removed");
+		bookid1 =sc.nextInt();
+		i=l.search(bookid1,n);
+		l.remove(i);													//removing book
+	 break;
+	case 4:
+		System.out.println("enter the bookid to be searched");
+		{ j=0;														//searching book
+			bookid1=sc.nextInt();
+			i=l.search(bookid1,n);
+			System.out.println("the searched book values are "+l.bookid[i]+" "+l.b[i][j]+" "+l.b[i][j+1]+" "+l.b[i][j+2]);
+		}
+		break;
+		
+	case 5:
+		for(i=0;i<n;i++)
+	{
+		j=0;														//dispalying books
+	l.display(i,j);	
+	}
+		break;
+	
+	
+}
+	System.out.println("If u want to continue press 1 or to stop press 2");
+	y=sc.nextInt();
+	if(y==2)
+	{
+		System.out.println("thanks for using....have a good day...");
+	}
+	}
+	while(y==1);
+	
+}
+}
+
+	
+	
+ 
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.program..
+package guvitask3;
+
+public interface Taxable 
+{
+	int salestax=7;
+	double incometax=10.5;										//creates Interface with abstract methods.
+public void calcTax(int salary);	
+}
+
+----------------------------------------
+package guvitask3;
+import java.util.Scanner;
+public class Employee implements Taxable
+{
+	@Override
+	 public void calcTax(int salary1)
+	{
+		int incometaxsal;
+		int incometax1=(int)incometax;
+		incometaxsal= (incometax1*salary1)/100;							//Emloyee class implements taxable, uses abstract method from interface.
+		System.out.println("The income tax is "+incometaxsal);
+	}
+	Employee(int empid1,int salary1,String name1)
+	{
+	int salary=salary1;
+	int empid=empid1;
+	String name=name1;
+	}
+}
+-------------------------------------------------------
+package guvitask3;
+public class Product1 implements Taxable
+{
+	@Override
+	 public void calcTax(int price1)
+	{
+		
+		int salestax1;
+		salestax1=(salestax*price1)/100;
+		System.out.println("The sales tax on unit price of product: "+salestax1);
+	}
+	
+	Product1(int pid1,int price1,int quantity1)						//product1 class implements taxable, uses abstract method from interface.
+	{
+	int pid,price,quantity;
+	pid=pid1;
+	price=price1;
+	quantity=quantity1;
+	}
+	
+		
+	}
+
+
+-----------------------------------------------------------
+package guvitask3;
+
+import java.util.Scanner;
+
+public class SayDriverMain 
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("....welcome....");
+		int pid,price,quantity,empid,salary;
+		String name;
+
+		System.out.println("Enter the empid value");						//getting userinput values.
+		empid=sc.nextInt();
+		System.out.println("Enter the salry");					//main class creates object and parametrized constructors for class Employee and class Product
+		salary=sc.nextInt();
+		System.out.println("Enter the name");
+		name=sc.next();
+		Employee e=new Employee(empid,salary,name);
+		e.calcTax(salary);
+		System.out.println("Enter the pid value");
+		pid=sc.nextInt();
+		System.out.println("Enter the price");
+		price=sc.nextInt();
+		System.out.println("Enter the quantity");
+		quantity=sc.nextInt();
+		Product1 p =new Product1(pid,price,quantity);
+		p.calcTax(price);
+		
+		
+	}
+}
